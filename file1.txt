@@ -28,3 +28,9 @@ bootloader --location=mbr --boot-drive=sda
 # Partition clearing information
 clearpart --all --initlabel --drives=sda
 autopart 
+
+%post --nochroot
+mkdir /mnt/sysimage/tmp/work
+cp -R /mnt/work/ /mnt/sysimage/tmp/
+sh /mnt/sysimage/tmp/work/setip.sh
+%end
